@@ -136,7 +136,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Scripts\AssesmentGameManager.cpp" />
     <ClCompile Include="..\Scripts\Camera.cpp" />
     <ClCompile Include="..\Scripts\CubeSkybox.cpp" />
     <ClCompile Include="..\Scripts\ElementBuffer.cpp" />
@@ -145,25 +144,25 @@
     <ClCompile Include="..\Scripts\GameObject.cpp" />
     <ClCompile Include="..\Scripts\GenerateMesh.cpp" />
     <ClCompile Include="..\Scripts\GenerateTexture.cpp" />
-    <ClCompile Include="..\Scripts\GeoSphere.cpp" />
-    <ClCompile Include="..\Scripts\GeoStar.cpp" />
-    <ClCompile Include="..\Scripts\GPUParticle.cpp" />
     <ClCompile Include="..\Scripts\Lights.cpp" />
-    <ClCompile Include="..\Scripts\Main.cpp" />
     <ClCompile Include="..\Scripts\MathUtils.cpp" />
     <ClCompile Include="..\Scripts\Mesh.cpp" />
-    <ClCompile Include="..\Scripts\ParticleSystem.cpp" />
     <ClCompile Include="..\Scripts\Shader.cpp" />
-    <ClCompile Include="..\Scripts\ssAnimatedModel.cpp" />
-    <ClCompile Include="..\Scripts\TessModel.cpp" />
     <ClCompile Include="..\Scripts\Texture.cpp" />
     <ClCompile Include="..\Scripts\TinyObjectLoader.cpp" />
     <ClCompile Include="..\Scripts\Transform.cpp" />
     <ClCompile Include="..\Scripts\UpdatedObject.cpp" />
     <ClCompile Include="..\Scripts\VertexArray.cpp" />
+    <ClCompile Include="AssesmentGameManager.cpp" />
+    <ClCompile Include="GeoSphere.cpp" />
+    <ClCompile Include="GeoStar.cpp" />
+    <ClCompile Include="GPUParticle.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ParticleSystem.cpp" />
+    <ClCompile Include="ssAnimatedModel.cpp" />
+    <ClCompile Include="TessModel.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Scripts\AssesmentGameManager.h" />
     <ClInclude Include="..\Scripts\Camera.h" />
     <ClInclude Include="..\Scripts\CubeSkybox.h" />
     <ClInclude Include="..\Scripts\ElementBuffer.h" />
@@ -172,23 +171,24 @@
     <ClInclude Include="..\Scripts\GameObject.h" />
     <ClInclude Include="..\Scripts\GenerateMesh.h" />
     <ClInclude Include="..\Scripts\GenerateTexture.h" />
-    <ClInclude Include="..\Scripts\GeoSphere.h" />
-    <ClInclude Include="..\Scripts\GeoStar.h" />
-    <ClInclude Include="..\Scripts\GPUParticle.h" />
     <ClInclude Include="..\Scripts\Lights.h" />
     <ClInclude Include="..\Scripts\Main.h" />
     <ClInclude Include="..\Scripts\MathUtils.h" />
     <ClInclude Include="..\Scripts\Mesh.h" />
-    <ClInclude Include="..\Scripts\ParticleSystem.h" />
     <ClInclude Include="..\Scripts\Shader.h" />
-    <ClInclude Include="..\Scripts\ssAnimatedModel.h" />
-    <ClInclude Include="..\Scripts\TessModel.h" />
     <ClInclude Include="..\Scripts\Texture.h" />
     <ClInclude Include="..\Scripts\TinyObjectLoader.h" />
     <ClInclude Include="..\Scripts\Transform.h" />
     <ClInclude Include="..\Scripts\UpdatedObject.h" />
     <ClInclude Include="..\Scripts\VertexArray.h" />
     <ClInclude Include="..\Scripts\VertexBuffer.h" />
+    <ClInclude Include="AssesmentGameManager.h" />
+    <ClInclude Include="GeoSphere.h" />
+    <ClInclude Include="GeoStar.h" />
+    <ClInclude Include="GPUParticle.h" />
+    <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="ssAnimatedModel.h" />
+    <ClInclude Include="TessModel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

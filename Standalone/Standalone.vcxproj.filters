@@ -30,27 +30,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Scripts\TessModel.cpp">
-      <Filter>Assesment</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Scripts\AssesmentGameManager.cpp">
-      <Filter>Assesment</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Scripts\GeoSphere.cpp">
-      <Filter>Assesment</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Scripts\GeoStar.cpp">
-      <Filter>Assesment</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Scripts\GPUParticle.cpp">
-      <Filter>Assesment</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Scripts\ParticleSystem.cpp">
-      <Filter>Assesment</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Scripts\ssAnimatedModel.cpp">
-      <Filter>Assesment</Filter>
-    </ClCompile>
     <ClCompile Include="..\Scripts\Camera.cpp">
       <Filter>Library\Camera</Filter>
     </ClCompile>
@@ -102,32 +81,32 @@
     <ClCompile Include="..\Scripts\MathUtils.cpp">
       <Filter>Library</Filter>
     </ClCompile>
-    <ClCompile Include="..\Scripts\Main.cpp">
-      <Filter>Library</Filter>
+    <ClCompile Include="GeoStar.cpp">
+      <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="GPUParticle.cpp">
+      <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystem.cpp">
+      <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="ssAnimatedModel.cpp">
+      <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="TessModel.cpp">
+      <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="AssesmentGameManager.cpp">
+      <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="GeoSphere.cpp">
+      <Filter>Assesment</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Scripts\TessModel.h">
-      <Filter>Assesment</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Scripts\AssesmentGameManager.h">
-      <Filter>Assesment</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Scripts\GeoSphere.h">
-      <Filter>Assesment</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Scripts\GeoStar.h">
-      <Filter>Assesment</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Scripts\GPUParticle.h">
-      <Filter>Assesment</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Scripts\ParticleSystem.h">
-      <Filter>Assesment</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Scripts\ssAnimatedModel.h">
-      <Filter>Assesment</Filter>
-    </ClInclude>
     <ClInclude Include="..\Scripts\Camera.h">
       <Filter>Library\Camera</Filter>
     </ClInclude>
@@ -184,6 +163,27 @@
     </ClInclude>
     <ClInclude Include="..\Scripts\MathUtils.h">
       <Filter>Library</Filter>
+    </ClInclude>
+    <ClInclude Include="GeoStar.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="GPUParticle.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystem.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="ssAnimatedModel.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="TessModel.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="AssesmentGameManager.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="GeoSphere.h">
+      <Filter>Assesment</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
