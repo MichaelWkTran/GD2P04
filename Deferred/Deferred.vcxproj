@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{46a742ce-b825-438e-a412-59eaf462f582}</ProjectGuid>
+    <RootNamespace>Deferred</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\PropertySheet.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\PropertySheet.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\PropertySheet.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\PropertySheet.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(MSBuildStartupDirectory)\Include;$(MSBuildStartupDirectory)\Include\FREETYPE;$(IncludePath)</IncludePath>
+    <LibraryPath>$(MSBuildStartupDirectory)\Library;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32.lib;freetyped.lib;assimp-vc140-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\MDSOpenGL\Scripts\AssesmentGameManager.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\Camera.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\CubeSkybox.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\ElementBuffer.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\Font.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\FreePlayerCamera.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\GameManager.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\GameObject.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\GenerateMesh.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\GenerateTexture.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\GeoSphere.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\GeoStar.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\GPUParticle.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\Lights.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\Main.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\MathUtils.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\Mesh.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\ParticleSystem.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\QuadMousePick.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\Shader.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\ssAnimatedModel.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\TessModel.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\TextLabel.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\Texture.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\TinyObjectLoader.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\Transform.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\UpdatedObject.cpp" />
+    <ClCompile Include="..\MDSOpenGL\Scripts\VertexArray.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\MDSOpenGL\Scripts\AssesmentGameManager.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\Camera.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\CubeSkybox.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\ElementBuffer.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\Font.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\FreePlayerCamera.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\GameManager.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\GameObject.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\GenerateMesh.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\GenerateTexture.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\GeoSphere.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\GeoStar.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\GPUParticle.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\Lights.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\Main.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\MathUtils.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\Mesh.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\ParticleSystem.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\QuadMousePick.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\Shader.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\ssAnimatedModel.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\TessModel.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\TextLabel.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\Texture.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\TinyObjectLoader.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\Transform.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\UpdatedObject.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\VertexArray.h" />
+    <ClInclude Include="..\MDSOpenGL\Scripts\VertexBuffer.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

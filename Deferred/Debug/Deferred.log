@@ -1,0 +1,3 @@
+﻿  Main.cpp
+D:\Projects\GD2P02-1 - Copy\MDSOpenGL\Scripts\Main.cpp(135,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Deferred.vcxproj -> D:\Projects\GD2P02-1 - Copy\Debug\Deferred.exe

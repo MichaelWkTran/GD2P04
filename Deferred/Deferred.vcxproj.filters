@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Assesment">
+      <UniqueIdentifier>{9dad8769-4757-4d37-88ea-a82427ca0687}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library">
+      <UniqueIdentifier>{01000a11-ffd8-4639-a3a4-b6034357d882}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Light">
+      <UniqueIdentifier>{642c5e21-1812-4394-b7bd-d268438316ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Mesh">
+      <UniqueIdentifier>{c94c1778-7972-4524-ac47-825fd4a480f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Text">
+      <UniqueIdentifier>{af4eb51b-282a-41f8-810f-f4bc59330d69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Shader">
+      <UniqueIdentifier>{980d9ce6-a674-4416-921a-faeb225f3fd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Texture">
+      <UniqueIdentifier>{14ee592b-609d-428d-a931-182dd1962a38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Game">
+      <UniqueIdentifier>{ebcf4660-de22-4390-b5be-4cdd7ebc53ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Camera">
+      <UniqueIdentifier>{4659e21b-3018-456e-a606-9c1d33e5198b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Game Objects">
+      <UniqueIdentifier>{c387c730-1ba8-4692-a929-25e6ca6c52c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Previous Assesments">
+      <UniqueIdentifier>{e732cd99-5366-49ad-b92f-4a3c370500ad}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\MDSOpenGL\Scripts\AssesmentGameManager.cpp">
+      <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\GPUParticle.cpp">
+      <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\ParticleSystem.cpp">
+      <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\ssAnimatedModel.cpp">
+      <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\TessModel.cpp">
+      <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\GeoSphere.cpp">
+      <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\GeoStar.cpp">
+      <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\MathUtils.cpp">
+      <Filter>Library</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\Main.cpp">
+      <Filter>Library</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\Lights.cpp">
+      <Filter>Library\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\ElementBuffer.cpp">
+      <Filter>Library\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\GenerateMesh.cpp">
+      <Filter>Library\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\Mesh.cpp">
+      <Filter>Library\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\TinyObjectLoader.cpp">
+      <Filter>Library\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\VertexArray.cpp">
+      <Filter>Library\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\Font.cpp">
+      <Filter>Library\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\TextLabel.cpp">
+      <Filter>Library\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\Shader.cpp">
+      <Filter>Library\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\GenerateTexture.cpp">
+      <Filter>Library\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\Texture.cpp">
+      <Filter>Library\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\GameManager.cpp">
+      <Filter>Library\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\Transform.cpp">
+      <Filter>Library\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\UpdatedObject.cpp">
+      <Filter>Library\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\Camera.cpp">
+      <Filter>Library\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\CubeSkybox.cpp">
+      <Filter>Library\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\FreePlayerCamera.cpp">
+      <Filter>Library\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\GameObject.cpp">
+      <Filter>Library\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MDSOpenGL\Scripts\QuadMousePick.cpp">
+      <Filter>Previous Assesments</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\MDSOpenGL\Scripts\AssesmentGameManager.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\GPUParticle.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\ParticleSystem.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\ssAnimatedModel.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\TessModel.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\GeoSphere.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\GeoStar.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\MathUtils.h">
+      <Filter>Library</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\Main.h">
+      <Filter>Library</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\Lights.h">
+      <Filter>Library\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\ElementBuffer.h">
+      <Filter>Library\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\GenerateMesh.h">
+      <Filter>Library\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\Mesh.h">
+      <Filter>Library\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\TinyObjectLoader.h">
+      <Filter>Library\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\VertexArray.h">
+      <Filter>Library\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\VertexBuffer.h">
+      <Filter>Library\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\Font.h">
+      <Filter>Library\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\TextLabel.h">
+      <Filter>Library\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\Shader.h">
+      <Filter>Library\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\GenerateTexture.h">
+      <Filter>Library\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\Texture.h">
+      <Filter>Library\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\GameManager.h">
+      <Filter>Library\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\Transform.h">
+      <Filter>Library\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\UpdatedObject.h">
+      <Filter>Library\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\Camera.h">
+      <Filter>Library\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\CubeSkybox.h">
+      <Filter>Library\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\FreePlayerCamera.h">
+      <Filter>Library\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\GameObject.h">
+      <Filter>Library\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MDSOpenGL\Scripts\QuadMousePick.h">
+      <Filter>Previous Assesments</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
