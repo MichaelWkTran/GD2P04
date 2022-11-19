@@ -7,8 +7,8 @@
 
 #include "TinyObjectLoader.h"
 #define TINYOBJLOADER_IMPLEMENTATION
-#include "../Include/TinyObjLoader/tiny_obj_loader.h"
-#include "../Include/glm/glm.hpp"
+#include <TinyObjLoader/tiny_obj_loader.h>
+#include <glm/glm.hpp>
 #include <vector>
 #include <string>
 #include <iostream>

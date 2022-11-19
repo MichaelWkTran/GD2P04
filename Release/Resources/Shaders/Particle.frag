@@ -1,12 +1,12 @@
 #version 430 core
 
-in vec2 v2TextureCoordinate;
-out vec4 fs_v4Colour;
-
-uniform vec4 uni_v4Colour = vec4(1.0);
-uniform sampler2D uni_samp2DDiffuse0;
+in vec2 gs_textureCoordinate;
+in float gs_life;
+out vec4 fs_colour;
+uniform sampler2D uni_texture;
 
 void main()
 {
-	fs_v4Colour = uni_v4Colour * texture(uni_samp2DDiffuse0, v2TextureCoordinate);
+	fs_colour = texture(uni_texture, gs_textureCoordinate);
+	fs_colour.w *= gs_life;
 }

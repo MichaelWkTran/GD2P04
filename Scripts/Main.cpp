@@ -79,7 +79,7 @@ void TextInput(GLFWwindow* _pWindow, unsigned int _iCodePoint)
 
 #pragma endregion
 
-#include "../Deferred/AssesmentGameManager.h"
+#include "DeferredGameManager.h"
 
 int main()
 {
@@ -135,7 +135,7 @@ int main()
     srand(time(0));
 
     //Set up Game Manager
-    new CAssesmentGameManager;
+    new CDeferredGameManager;
 
     //Set Input Callbacks
     glfwSetKeyCallback

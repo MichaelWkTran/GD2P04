@@ -1,7 +1,7 @@
 #include "ssAnimatedModel.h"
-#include "../Scripts/Camera.h"
-#include "../Scripts/Main.h"
-#include "../Scripts/Texture.h"
+#include <Camera.h>
+#include <Main.h>
+#include <Texture.h>
 
 #define POSITION_LOCATION	  0
 #define TEX_COORD_LOCATION	  1

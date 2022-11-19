@@ -34,7 +34,7 @@ const bool CGameObject::TagExists(const char* _tagName)
 	else return false;
 }
 
-const CBaseMesh* CGameObject::GetMesh() const
+CBaseMesh* CGameObject::GetMesh() const
 {
 	return m_mesh;
 }

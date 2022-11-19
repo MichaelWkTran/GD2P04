@@ -31,6 +31,17 @@ public:
 	CGameObject();
 	~CGameObject();
 	const bool TagExists(const char* _tagName);
-	const CBaseMesh* GetMesh() const;
+	CBaseMesh* GetMesh() const;
 	virtual void Draw() override;
+
+	//Initialisation
+	template<class T>
+	T* GenerateMesh();
 };
+
+template<class T>
+inline T* CGameObject::GenerateMesh()
+{
+	m_mesh = new T;
+	return (T*)m_mesh;
+}

@@ -12,17 +12,17 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include <stb/stb_image_write.h>
 
-const char* CTexture::m_pDirective = "Resources/Textures/";
+const char* CTexture::m_pDirective = "../Resources/Textures/";
 
 CTexture::CTexture(GLenum&& _GLeTarget)
 {
-	glGenTextures(1, &m_uiID);
+	glGenTextures(1, &m_ID);
 	m_GLeTarget = _GLeTarget;
 }
 
 CTexture::CTexture(std::string _pImage, GLenum&& _GLeFormat, GLenum&& _GLePixelType)
 {
-	glGenTextures(1, &m_uiID);
+	glGenTextures(1, &m_ID);
 	m_GLeTarget = GL_TEXTURE_2D;
 
 	//Load 2D Image
@@ -45,12 +45,12 @@ CTexture::CTexture(std::string _pImage, GLenum&& _GLeFormat, GLenum&& _GLePixelT
 
 CTexture::~CTexture()
 {
-	glDeleteTextures(1, &m_uiID);
+	glDeleteTextures(1, &m_ID);
 }
 
 CTexture::operator int() const
 {
-	return m_uiID;
+	return m_ID;
 }
 
 CTexture::operator int* ()
@@ -60,7 +60,7 @@ CTexture::operator int* ()
 
 const unsigned int CTexture::GetID() const
 {
-	return m_uiID;
+	return m_ID;
 }
 
 void CTexture::Uniform(unsigned int _shaderID, std::string _uniformName, unsigned int _slot)
@@ -74,7 +74,7 @@ void CTexture::Uniform(unsigned int _shaderID, std::string _uniformName, unsigne
 
 void CTexture::Bind() const
 {
-	glBindTexture(m_GLeTarget, m_uiID);
+	glBindTexture(m_GLeTarget, m_ID);
 }
 
 void CTexture::Unbind()

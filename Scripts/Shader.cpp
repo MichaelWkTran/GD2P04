@@ -12,7 +12,7 @@
 #include <cerrno>
 #include <glm/gtc/type_ptr.hpp>
 
-const char* CShader::m_directive = "Resources/Shaders/";
+const char* CShader::m_directive = "../Resources/Shaders/";
 
 //------------------------------------------------------------------------------------------------------------------------
 // Procedure: CShader()
@@ -37,7 +37,8 @@ CShader::CShader(std::string _vertexFile, std::string _strTessControlFile, std::
 		if (_strShaderDirectory == "") return -1;
 
 		//Read shader
-		std::string strShaderCode = GetFileContents(m_directive + _strShaderDirectory); const char* pVertexSource = strShaderCode.c_str();
+		std::string strShaderCode = GetFileContents(m_directive + _strShaderDirectory);
+		const char* pVertexSource = strShaderCode.c_str();
 		
 		//Create and Compile Shader
 		unsigned int uiShaderID = glCreateShader(_iShaderType);

@@ -5,9 +5,9 @@
 /*  DATE: Aug 27th, 2022																								*/
 /************************************************************************************************************************/
 
-#include "../Scripts/Main.h"
-#include "../Scripts/GameManager.h"
-#include "../Scripts/Camera.h"
+#include "Main.h"
+#include <GameManager.h>
+#include <Camera.h>
 #include <iostream> 
 
 #pragma region Window
@@ -79,7 +79,7 @@ void TextInput(GLFWwindow* _pWindow, unsigned int _iCodePoint)
 
 #pragma endregion
 
-#include "../Deferred/AssesmentGameManager.h"
+#include "StandaloneGameManager.h"
 
 int main()
 {
@@ -135,7 +135,7 @@ int main()
     srand(time(0));
 
     //Set up Game Manager
-    new CAssesmentGameManager;
+    new CStandaloneGameManager;
 
     //Set Input Callbacks
     glfwSetKeyCallback

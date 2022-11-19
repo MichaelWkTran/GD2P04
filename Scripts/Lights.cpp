@@ -42,7 +42,7 @@ void CLight::UpdateLightUniforms(CShader& _shader)
 		}
 		else if (auto object = dynamic_cast<CPointLight*>(light))
 		{
-			uniformStructName = std::string("uni_PointLight") + '[' + std::to_string(infinitePointLightIndex) + ']';
+			uniformStructName = std::string("uni_PointLight") + '[' + std::to_string(pointLightIndex) + ']';
 
 			//Set the light uniforms
 			_shader.Uniform3f(uniformStructName + ".v3LightPosition", object->GetPosition());
@@ -55,7 +55,7 @@ void CLight::UpdateLightUniforms(CShader& _shader)
 		}
 		else if (auto object = dynamic_cast<CDirectionalLight*>(light))
 		{
-			uniformStructName = std::string("uni_DirectionalLight")  + '[' + std::to_string(infinitePointLightIndex) + ']';
+			uniformStructName = std::string("uni_DirectionalLight")  + '[' + std::to_string(directionalLightIndex) + ']';
 
 			//Set the light uniforms
 			_shader.Uniform3f(uniformStructName + ".v3LightDirection", object->GetLightDirection());
@@ -65,7 +65,7 @@ void CLight::UpdateLightUniforms(CShader& _shader)
 		}
 		else if (auto object = dynamic_cast<CSpotLight*>(light))
 		{
-			uniformStructName = std::string("uni_SpotLight") + '[' + std::to_string(infinitePointLightIndex) + ']';
+			uniformStructName = std::string("uni_SpotLight") + '[' + std::to_string(spotLightIndex) + ']';
 
 			//Set the light uniforms
 			_shader.Uniform3f(uniformStructName + ".v3LightPosition", object->GetPosition());

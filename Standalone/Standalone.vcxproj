@@ -75,8 +75,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(MSBuildStartupDirectory)\Include;$(MSBuildStartupDirectory)\Include\FREETYPE;$(IncludePath)</IncludePath>
+    <IncludePath>$(MSBuildStartupDirectory)\Include;$(MSBuildStartupDirectory)\Include\FREETYPE;$(MSBuildStartupDirectory)\Scripts;$(IncludePath)</IncludePath>
     <LibraryPath>$(MSBuildStartupDirectory)\Library;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>$(MSBuildStartupDirectory)\Library;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(MSBuildStartupDirectory)\Include;$(MSBuildStartupDirectory)\Include\FREETYPE;$(MSBuildStartupDirectory)\Scripts;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -105,6 +109,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32.lib;freetyped.lib;assimp-vc140-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -153,14 +158,11 @@
     <ClCompile Include="..\Scripts\Transform.cpp" />
     <ClCompile Include="..\Scripts\UpdatedObject.cpp" />
     <ClCompile Include="..\Scripts\VertexArray.cpp" />
-    <ClCompile Include="AssesmentGameManager.cpp" />
-    <ClCompile Include="GeoSphere.cpp" />
-    <ClCompile Include="GeoStar.cpp" />
+    <ClCompile Include="StandaloneGameManager.cpp" />
     <ClCompile Include="GPUParticle.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="ParticleSystem.cpp" />
+    <ClCompile Include="BonfireParticleSystem.cpp" />
     <ClCompile Include="ssAnimatedModel.cpp" />
-    <ClCompile Include="TessModel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Scripts\Camera.h" />
@@ -182,13 +184,10 @@
     <ClInclude Include="..\Scripts\UpdatedObject.h" />
     <ClInclude Include="..\Scripts\VertexArray.h" />
     <ClInclude Include="..\Scripts\VertexBuffer.h" />
-    <ClInclude Include="AssesmentGameManager.h" />
-    <ClInclude Include="GeoSphere.h" />
-    <ClInclude Include="GeoStar.h" />
+    <ClInclude Include="StandaloneGameManager.h" />
     <ClInclude Include="GPUParticle.h" />
-    <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="BonfireParticleSystem.h" />
     <ClInclude Include="ssAnimatedModel.h" />
-    <ClInclude Include="TessModel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

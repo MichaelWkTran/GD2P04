@@ -24,7 +24,7 @@ template<class T>
 inline CMesh<T>::CMesh()
 {
 	m_shader = nullptr;
-	m_shadowShader = CLight::GetShadowMapShader();
+	//m_shadowShader = CLight::GetShadowMapShader();
 	m_drawMethod = [](CMesh<T>& _Mesh)
 	{
 		glDrawElements(GL_TRIANGLES, _Mesh.GetIndicies().size(), GL_UNSIGNED_INT, 0);

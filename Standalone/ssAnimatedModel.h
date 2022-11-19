@@ -26,10 +26,10 @@
 #include <fstream>
 #include <vector>
 #include <map>
-#include "../Scripts/Transform.h"
-#include "../Scripts/UpdatedObject.h"
+#include <Transform.h>
+#include <UpdatedObject.h>
 #include <fstream>
-#include "../Scripts/MathUtils.h"
+#include <MathUtils.h>
 
 #define ZERO_MEM(a) memset(a, 0, sizeof(a))
 #define ZERO_MEM_VAR(var) memset(&var, 0, sizeof(var))

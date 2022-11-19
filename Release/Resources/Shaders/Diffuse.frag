@@ -220,7 +220,6 @@ void SpotLight(stSpotLight _Light)
 
 	//---------------------------------------------------------------------------------
 	vec3 v3LightDirection = normalize(v3LightPosition - vs_v3Position);
-
 	float fAngle = dot(v3SpotLightDirection, -v3LightDirection);
 	float fIntensity = v4LightColour.w * clamp((fAngle - fOuterCone) / (fInnerCone - fOuterCone), 0.0f, 1.0f);
 

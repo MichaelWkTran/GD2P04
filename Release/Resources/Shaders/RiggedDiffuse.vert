@@ -29,11 +29,8 @@ void main(void)
 	vec4 totalNormal = vec4(0.0);
 	for(int i = 0; i < MAX_WEIGHTS; i++)
 	{
-		vec4 posePosition = jointTransforms[boneIds[i]] * vec4(position, 1.0);
-		totalLocalPosition += posePosition * weights[i];
-		
-		vec4 worldNormal = jointTransforms[boneIds[i]] * vec4(normal, 0.0);
-		totalNormal += worldNormal * weights[i];
+		totalLocalPosition += (jointTransforms[boneIds[i]] * vec4(position, 1.0)) * weights[i];
+		totalNormal += 		  (jointTransforms[boneIds[i]] * vec4(normal,   1.0)) * weights[i];
 	}
 	gl_Position = vp * model * totalLocalPosition;
 	

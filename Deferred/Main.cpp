@@ -1,154 +1,190 @@
 /************************************************************************************************************************/
 /*	NAME: Michael Wai Kit Tran																							*/
 /*	ORGN: Bachelor of Software Engineering, Media Design School															*/
-/*	FILE: Mesh.h																										*/
-/*  DATE: Aug 23rd, 2022																								*/
+/*	FILE: Main.cpp																						        		*/
+/*  DATE: Aug 27th, 2022																								*/
 /************************************************************************************************************************/
 
-#include "../Scripts/Mesh.h"
-#include "../Scripts/Texture.h"
-#include "../Scripts/Shader.h"
-#include "../Scripts/Camera.h"
-#include "../Scripts/Lights.h"
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "Main.h"
+#include <GameManager.h>
+#include <Camera.h>
+#include <iostream> 
 
-std::set<CBaseMesh*> CBaseMesh::meshes;
+#pragma region Window
 
-//------------------------------------------------------------------------------------------------------------------------
-// Procedure: CMesh()
-//	 Purpose: Initalises variables of the mesh
+unsigned int e_viewPortW = 800, e_viewPortH = 800;
+GLFWwindow* e_mainWindow = nullptr;
 
-template<class T>
-inline CMesh<T>::CMesh()
+#pragma endregion
+
+#pragma region Time
+
+float e_previousTimestep = 0.0f;
+float e_deltaTime = 0.0f;
+float e_maxDeltatime = 1.0f / 60.0f;
+
+#pragma endregion
+
+#pragma region Input
+
+std::set<void(*)(GLFWwindow*, int, int, int, int)> e_keyCallbackFunctions;
+char e_codePoint = 0;
+bool e_codePointFound = false;
+
+std::set<void(*)(GLFWwindow*, int, int, int)> e_mouseCallbackFunctions;
+glm::vec2 e_mousePosition;
+glm::vec2 e_mouseNDCPosition;
+glm::vec3 e_mouseRayDirection;
+
+void UpdateMousePosition()
 {
-	m_shader = nullptr;
-	m_shadowShader = CLight::GetShadowMapShader();
-	m_drawMethod = [](CMesh<T>& _Mesh)
-	{
-		glDrawElements(GL_TRIANGLES, _Mesh.GetIndicies().size(), GL_UNSIGNED_INT, 0);
-	};
-	m_updateVertexArray = false;
+    double posX, posY;
+    glfwGetCursorPos(e_mainWindow, &posX, &posY);
+
+    e_mousePosition.x = (float)posX;
+    e_mousePosition.y = (float)posY;
+
+    //Update Mouse NDC Position
+    e_mouseNDCPosition = glm::vec2
+    (
+        (2.0f * e_mousePosition.x) / ((float)e_viewPortW - 1.0f),
+        (1.0f - (2.0f * e_mousePosition.y)) / (float)e_viewPortH
+    );
+
+    glm::vec4 clipCoord = glm::vec4(e_mouseNDCPosition.x, e_mouseNDCPosition.y, -1.0f, 1.0f);
+
+    //Homogeneous Clip Space to Eye space
+    glm::mat4 invProjMatrix = glm::inverse(GetMainCamera().GetProjectionMatrix());
+    glm::vec4 eyeCoords = invProjMatrix * clipCoord;
+
+    // Manually set z and w to mean forward direction and a vector and not a point.
+    eyeCoords = glm::vec4(eyeCoords.x, eyeCoords.y, -1.0f, 0.0f);
+
+    //Eyespace to World space
+    glm::mat4 invViewMatrix = glm::inverse(GetMainCamera().GetViewMatrix());
+    glm::vec4 rayWorld = invViewMatrix * eyeCoords;
+    e_mouseRayDirection = glm::normalize(rayWorld);
 }
 
-//------------------------------------------------------------------------------------------------------------------------
-// Procedure: CMesh()
-//	 Purpose: Initalises variables of the mesh._vVertices is the number of vertices of the mesh.
-//			  _vIndices is the number of indices in the element buffer.
-//			  _mapTextures is the textures stored in the mesh.
-//			  _pShader is the shader used by the mesh. 
-
-
-template<class T>
-CMesh<T>::CMesh(std::vector<T>& _vVerticies, std::vector<unsigned int>& _vIndicies, std::map<const char*, CTexture*>& _textures, CShader* _pShader)
+void UpdateInputPressed()
 {
-	m_vertexBuffer.SetVertices(_vVerticies);
-	m_elementBuffer.SetIndicies(_vIndicies);
-	m_textures = _textures;
-	m_shader = _pShader;
-	m_shadowShader = CLight::GetShadowMapShader();
-	m_drawMethod = [](CMesh<T>& _Mesh)
-	{
-		glDrawElements(GL_TRIANGLES, _Mesh.GetIndicies().size(), GL_UNSIGNED_INT, 0);
-	};
-	m_updateVertexArray = true;
+    e_codePointFound = false;
 }
 
-template<class T>
-void CMesh<T>::UpdateVertexArray()
+void TextInput(GLFWwindow* _pWindow, unsigned int _iCodePoint)
 {
-	m_vertexArray.Bind(); m_vertexBuffer.Bind(); m_elementBuffer.Bind();
-	T::LinkAttributes();
-	m_vertexArray.Unbind(); m_vertexBuffer.Unbind(); m_elementBuffer.Unbind();
+    e_codePointFound = true;
+    e_codePoint = _iCodePoint;
 }
 
-//------------------------------------------------------------------------------------------------------------------------
-// Procedure: GetVerticies()
-//	 Purpose: Gets the vertices of the mesh.
-//	 Returns: The vertices of the mesh.
+#pragma endregion
 
-template<class T>
-inline const std::vector<T> CMesh<T>::GetVerticies() const
+#include "DeferredGameManager.h"
+
+int main()
 {
-	return m_vertexBuffer.GetVertices();
+#pragma region Setup GLFW, GLEW, and Viewport
+
+    //Initialize and Configure GLFW
+    glfwInit();
+
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+    //Set up Window
+    e_mainWindow = glfwCreateWindow(e_viewPortW, e_viewPortH, "LearnOpenGL", NULL, NULL);
+    if (e_mainWindow == NULL)
+    {
+        std::cout << "Failed to create GLFW window" << std::endl;
+        glfwTerminate();
+        return -1;
+    }
+    glfwMakeContextCurrent(e_mainWindow);
+
+    //Initializing GLEW
+    if (glewInit() != GLEW_OK)
+    {
+        std::cout << "Failed to initialize GLEW" << std::endl;
+        glfwTerminate();
+        return -1;
+    }
+
+    //Setup Window Viewport
+    glViewport(0, 0, (int)e_viewPortW, (int)e_viewPortH);
+    glfwSetFramebufferSizeCallback(e_mainWindow, [](GLFWwindow* _pMainWindow, int _iWidth, int _iHeight)
+        {
+            glViewport(0, 0, _iWidth, _iHeight);
+            //e_uViewPortW = (int)_iWidth;
+            //e_uViewPortH = (int)_iHeight;
+            //GetMainCamera().SetViewPort(glm::uvec2(_iWidth, _iHeight));
+        });
+
+    //Set up Culling
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
+    glFrontFace(GL_CCW);
+
+    //Set up Anti-Aliasing
+    glfwWindowHint(GLFW_SAMPLES, 4);
+    glEnable(GL_MULTISAMPLE);
+
+#pragma endregion
+
+    srand(time(0));
+
+    //Set up Game Manager
+    new CDeferredGameManager;
+
+    //Set Input Callbacks
+    glfwSetKeyCallback
+    (
+        e_mainWindow,
+        [](GLFWwindow* _pWindow, int _iKey, int _iScanCode, int _iAction, int _iMods)
+        {
+            for (auto& i : e_keyCallbackFunctions) i(_pWindow, _iKey, _iScanCode, _iAction, _iMods);
+        }
+    );
+
+    glfwSetMouseButtonCallback
+    (
+        e_mainWindow,
+        [](GLFWwindow* _pWindow, int _iButton, int _iAction, int _iMods)
+        {
+            for (auto& i : e_mouseCallbackFunctions) i(_pWindow, _iButton, _iAction, _iMods);
+        }
+    );
+
+    //Game Loop
+    while (!glfwWindowShouldClose(e_mainWindow))
+    {
+        //Update Deltatime
+        float currentTimestep = (float)glfwGetTime();
+        e_deltaTime = currentTimestep - e_previousTimestep;
+        if (e_deltaTime > e_maxDeltatime) e_deltaTime = e_maxDeltatime;
+        e_previousTimestep = currentTimestep;
+
+        //Update Window Size
+        {
+            int x, y;
+            glfwGetWindowSize(e_mainWindow, &x, &y);
+            e_viewPortW = x;
+            e_viewPortH = y;
+        }
+
+        //Inputs
+        UpdateMousePosition();
+
+        //Update GameManager
+        GetGameManager().Update();
+
+        //Check and call events and swap the buffers
+        glfwSwapBuffers(e_mainWindow);
+        glfwPollEvents();
+    }
+
+    glfwDestroyWindow(e_mainWindow);
+    glfwTerminate();
+    return 0;
 }
-
-//------------------------------------------------------------------------------------------------------------------------
-// Procedure: SetVerticies()
-//	 Purpose: Sets the vertices of the mesh via _vVertices.
-
-template<class T>
-inline void CMesh<T>::SetVerticies(const std::vector<T> _vVerticies)
-{
-	m_vertexBuffer.SetVertices(_vVerticies);
-	m_updateVertexArray = true;
-}
-
-//------------------------------------------------------------------------------------------------------------------------
-// Procedure: GetIndicies()
-//	 Purpose: Gets the indices stored in the mesh.
-//	 Returns: The indices stored in the mesh.
-
-const std::vector<unsigned int> CBaseMesh::GetIndicies() const
-{
-	return m_elementBuffer.GetIndicies();
-}
-
-//------------------------------------------------------------------------------------------------------------------------
-// Procedure: SetIndicies()
-//	 Purpose: Sets the indices stored in the mesh via _vIndices.
-
-void CBaseMesh::SetIndicies(const std::vector<unsigned int> _vIndicies)
-{
-	m_elementBuffer.SetIndicies(_vIndicies);
-	m_updateVertexArray = true;
-}
-
-//------------------------------------------------------------------------------------------------------------------------
-// Procedure: Draw()
-//	 Purpose: Draws the mesh using the camera matrix from _Camera
-
-template<class T>
-inline void CMesh<T>::Draw(const CCamera& _Camera)
-{
-	//Dont draw if no shader is assigned or m_VertexBuffer have no verticies
-	if (m_shader == nullptr || m_vertexBuffer.GetVertices().empty()) return void();
-
-	//Update vertex array if its vertex data has changed
-	if (m_updateVertexArray)
-	{
-		m_updateVertexArray = false;
-		UpdateVertexArray();
-	}
-
-	//Set GameObject Uniform
-	m_shader->UniformMatrix4fv("uni_mat4Model", 1, GL_FALSE, m_transform.GetModel());
-
-	//Set Mesh Uniforms
-	m_shader->ResetUniforms();
-	m_shader->Uniform3f("uni_v3CameraPosition", _Camera.m_transform.GetPosition());
-	m_shader->UniformMatrix4fv("uni_mat4CameraMatrix", 1, GL_FALSE, _Camera.GetCameraMatrix());
-
-	//Set Shadow Uniforms
-	if (m_shadowShader != nullptr) CLight::UpdateShadowUniforms(*m_shader, m_textures.size() + 1U);
-
-	//Set Texture Uniforms
-	unsigned int slot = 0;
-	for (auto& texture : m_textures)
-	{
-		if (texture.second == nullptr) continue;
-		texture.second->Uniform(*m_shader, texture.first, slot);
-		slot++;
-	}
-
-	//Draw Mesh
-	m_shader->Activate();
-	m_vertexArray.Bind();
-	m_drawMethod(*this);
-	m_vertexArray.Unbind();
-	m_shader->Deactivate();
-	CTexture::Unbind();
-}
-
-template class CMesh<stVertex>;

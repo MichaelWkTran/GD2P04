@@ -17,7 +17,7 @@ class CShader;
 class CTexture
 {
 private:
-	unsigned int m_uiID;
+	unsigned int m_ID;
 
 public:
 	static const char* m_pDirective;
