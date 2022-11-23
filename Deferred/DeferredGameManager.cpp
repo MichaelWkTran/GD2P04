@@ -99,9 +99,9 @@ CDeferredGameManager::CDeferredGameManager()
 
 	//Setup Lighting
 	new CDirectionalLight(glm::vec4(1.0f, 1.0f, 1.0f, 0.3f));
-	new CPointLight(glm::vec3( 0.0f, 0.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 2.0f), 6, 1.4);
-	new CPointLight(glm::vec3(-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 2.0f), 6, 1.4);
-	new CPointLight(glm::vec3( 3.0f, 0.0f, 0.0f), glm::vec4(0.0f, 0.0f, 1.0f, 2.0f), 6, 1.4);
+	new CPointLight(glm::vec3( 0.0f, 0.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 2.0f), 6.0f, 1.4f);
+	new CPointLight(glm::vec3(-1.0f, 1.0f, 1.0f), glm::vec4(0.0f, 1.0f, 0.0f, 2.0f), 6.0f, 1.4f);
+	new CPointLight(glm::vec3( 3.0f, 0.0f, 0.0f), glm::vec4(0.0f, 0.0f, 1.0f, 2.0f), 6.0f, 1.4f);
 	new CPointLight(glm::vec3( 3.0f, 0.0f, 2.0f), glm::vec4(1.0f, 1.0f, 0.0f, 2.0f));
 	CLight::UpdateLightUniforms(*m_renderQuad.m_shader);
 

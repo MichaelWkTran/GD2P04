@@ -45,7 +45,10 @@ class Matrix4f
 public:
     float m[4][4];
 
-    Matrix4f(){ }
+	Matrix4f()
+	{
+		SetZero();
+	}
 
 	Matrix4f(glm::mat4 _glmMatrix) {
 		m[0][0] = _glmMatrix[0][0]; m[0][1] = _glmMatrix[1][0]; m[0][2] = _glmMatrix[2][0]; m[0][3] = _glmMatrix[3][0];
@@ -277,6 +280,7 @@ public:
 	void setAnimSpeed(float _animSpeed);
 
 	CTransform m_transform;
+	virtual void Update() override;
 	virtual void Draw() override;
 
 private:

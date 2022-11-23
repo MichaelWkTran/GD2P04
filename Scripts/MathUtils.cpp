@@ -26,7 +26,6 @@ const float glm::CosineInterpolate(const float _a, const float _b, const float _
 
 const glm::mat4 glm::mat4_cast(const aiMatrix4x4 _value)
 {
-	https://github.com/mackron/GTGameEngine/blob/master/source/ModelDefinition_Assimp.cpp
 	glm::mat4 converted(0);
 	
 	converted[0][0] = _value.a1; converted[1][0] = _value.a2; converted[2][0] = _value.a3; converted[3][0] = _value.a4;

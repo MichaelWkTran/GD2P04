@@ -48,14 +48,14 @@ CGPUParticleSystem::CGPUParticleSystem()
 		float minSpreadSpeed = 2.0f; float maxSpreadSpeed = 3.0f;
 		float minRiseSpeed = 2.0f; float maxRiseSpeed = 6.0f;
 		
-		float spreadSpeed = glm::Lerp(minSpreadSpeed, maxSpreadSpeed, (float)rand() / (double)RAND_MAX);
-		float spreadAngle = 2.0f * glm::pi<float>() * ((float)rand() / (double)RAND_MAX);
+		float spreadSpeed = glm::Lerp(minSpreadSpeed, maxSpreadSpeed, (float)rand() / RAND_MAX);
+		float spreadAngle = 2.0f * glm::pi<float>() * ((float)rand() / RAND_MAX);
 
-		initialposition[i] = glm::vec4(0.0f, 0.0f, 0.0f, ((float)rand()/(double)RAND_MAX));
+		initialposition[i] = glm::vec4(0.0f, 0.0f, 0.0f, ((float)rand()/RAND_MAX));
 		initialvelocity[i] = glm::vec3
 		(
 			cosf(spreadAngle) * spreadSpeed,
-			glm::Lerp(minRiseSpeed, maxRiseSpeed, (float)rand()/(double)RAND_MAX),
+			glm::Lerp(minRiseSpeed, maxRiseSpeed, (float)rand()/RAND_MAX),
 			sinf(spreadAngle) * spreadSpeed
 		);
 	}

@@ -35,9 +35,9 @@ private:
 	public:
 		static CBonfireParticleSystem* m_particleSystem;
 		
-		glm::vec3 m_position;
-		glm::vec3 m_velocity;
-		float m_elapsedTime;
+		glm::vec3 m_position = {};
+		glm::vec3 m_velocity = {};
+		float m_elapsedTime = 0.0f;
 
 		virtual void ResetToInitialValues() = 0;
 		virtual void Update() = 0;

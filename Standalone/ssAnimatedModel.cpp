@@ -81,7 +81,7 @@ ssAnimatedModel::ssAnimatedModel(std::string modelFilname, /*Camera *_camera, */
 	//animation defaults
 	startFrame = 31;
 	endFrame = 50;
-	animFps = m_pScene->mAnimations[0]->mChannels[0]->mNumPositionKeys / m_pScene->mAnimations[0]->mDuration;
+	animFps = int(m_pScene->mAnimations[0]->mChannels[0]->mNumPositionKeys / m_pScene->mAnimations[0]->mDuration);
 
 	animStartTime = startFrame / float(animFps);
 	animEndtime = endFrame / float(animFps);
@@ -230,7 +230,7 @@ void ssAnimatedModel::loadPerVertexBoneData(int meshIndex,
 	// In m_BoneNameToIDMapping map -> maps bone name to bone id
 	// In VertexBoneData Vector -> stores per vertex which bone affects with what weightage
 
-	for (int i = 0; i < pMesh->mNumBones; i++) { // for each bone
+	for (int i = 0; i < (int)pMesh->mNumBones; i++) { // for each bone
 		
 		int BoneIndex = 0;
 		
@@ -267,7 +267,7 @@ void ssAnimatedModel::loadPerVertexBoneData(int meshIndex,
 		
 		// Gets the bone index and bone weight of each bone affecting a vertex
 		// stored in vertexBoneData (bone) -> stores per vertex bone data
-		for (int j = 0; j < pMesh->mBones[i]->mNumWeights; j++) {
+		for (int j = 0; j < (int)pMesh->mBones[i]->mNumWeights; j++) {
 
 			int VertexID = m_Entries[meshIndex].BaseVertex + pMesh->mBones[i]->mWeights[j].mVertexId;
 
@@ -334,6 +334,49 @@ bool ssAnimatedModel::initMaterials(const aiScene * pScene, const std::string fi
 	return Ret;
 }
 
+void ssAnimatedModel::Update()
+{
+	//Get move input
+	glm::vec2 moveInput(0.0f);
+	if (glfwGetKey(e_mainWindow, GLFW_KEY_I) == GLFW_PRESS) moveInput.y = 1.0f;
+	if (glfwGetKey(e_mainWindow, GLFW_KEY_K) == GLFW_PRESS) moveInput.y = -1.0f;
+	if (glfwGetKey(e_mainWindow, GLFW_KEY_J) == GLFW_PRESS) moveInput.x = -1.0f;
+	if (glfwGetKey(e_mainWindow, GLFW_KEY_L) == GLFW_PRESS) moveInput.x = 1.0f;
+	
+	//Get move velocity
+	glm::vec3 velocity(0.0f);
+	float moveSpeed = 500.0f;
+
+	//Get forward velocity
+	{
+		glm::vec3 forwardVelocity = GetMainCamera().m_transform.Forward();
+		forwardVelocity.y = 0.0f; forwardVelocity = glm::normalize(forwardVelocity);
+		velocity += moveInput.y * forwardVelocity * moveSpeed;
+	}
+	
+	//Get right velocity
+	{
+		glm::vec3 rightVelocity = GetMainCamera().m_transform.Right();
+		rightVelocity.y = 0.0f; rightVelocity = glm::normalize(rightVelocity);
+		velocity += moveInput.x * rightVelocity * moveSpeed;
+	}
+
+	//Move player
+	if (velocity != glm::vec3(0.0f))
+	{
+		setAnimSpeed(0.1f);
+		m_transform.Move(velocity * e_deltaTime);
+		
+		glm::fquat lookDirection = glm::lookAt(glm::vec3(0), -velocity, m_transform.Up());
+		m_transform.SetRotation(lookDirection);
+	}
+	else
+	{
+		setAnimSpeed(0.0f);
+	}
+	
+}
+
 void ssAnimatedModel::Draw()
 {
 	render(e_deltaTime);
@@ -357,7 +400,7 @@ void ssAnimatedModel::setShaderEffectVariables(float dt)
 
 	boneTransforms(dt, transforms);
 
-	for (int i = 0; i < transforms.size(); i++)
+	for (int i = 0; i < (int)transforms.size(); i++)
 	{
 		glUniformMatrix4fv(m_boneLocation[i], 1, GL_TRUE, glm::value_ptr(transforms[i]));
 	}
@@ -396,7 +439,6 @@ void ssAnimatedModel::render(float dt/*, Terrain* terrain*/){
 
 	// Make sure the VAO is not changed from the outside    
 	glBindVertexArray(0);
-
 }
 
 

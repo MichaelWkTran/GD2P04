@@ -210,7 +210,11 @@ struct aiVertexWeight
 #ifdef __cplusplus
 
     //! Default constructor
-    aiVertexWeight() { }
+    aiVertexWeight()
+    {
+        mVertexId = {};
+        mWeight = {};
+    }
 
     //! Initialisation from a given index and vertex weight factor
     //! \param pID ID
@@ -261,6 +265,8 @@ struct aiBone
       , mNumWeights( other.mNumWeights )
       , mOffsetMatrix( other.mOffsetMatrix )
     {
+        mWeights = {};
+
         if (other.mWeights && other.mNumWeights)
         {
             mWeights = new aiVertexWeight[mNumWeights];

@@ -148,7 +148,6 @@
     <ClCompile Include="..\Scripts\GameManager.cpp" />
     <ClCompile Include="..\Scripts\GameObject.cpp" />
     <ClCompile Include="..\Scripts\GenerateMesh.cpp" />
-    <ClCompile Include="..\Scripts\GenerateTexture.cpp" />
     <ClCompile Include="..\Scripts\Lights.cpp" />
     <ClCompile Include="..\Scripts\MathUtils.cpp" />
     <ClCompile Include="..\Scripts\Mesh.cpp" />
@@ -172,7 +171,6 @@
     <ClInclude Include="..\Scripts\GameManager.h" />
     <ClInclude Include="..\Scripts\GameObject.h" />
     <ClInclude Include="..\Scripts\GenerateMesh.h" />
-    <ClInclude Include="..\Scripts\GenerateTexture.h" />
     <ClInclude Include="..\Scripts\Lights.h" />
     <ClInclude Include="..\Scripts\Main.h" />
     <ClInclude Include="..\Scripts\MathUtils.h" />

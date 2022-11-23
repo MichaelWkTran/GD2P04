@@ -57,13 +57,13 @@ void CBonfireParticleSystem::Update()
 	if (!m_visible) return;
 
 	//Update particles and get their position data
-	for (int i = 0; i < m_fireParticleCount; i++)
+	for (int i = 0; i < (int)m_fireParticleCount; i++)
 	{
 		m_fireParticles[i].Update();
 		m_firePositions[i] = glm::vec4(m_fireParticles[i].m_position, m_fireParticles[i].m_elapsedTime / m_fireEmmisionRate);
 	}
 
-	for (int i = 0; i < m_smokeParticleCount; i++)
+	for (int i = 0; i < (int)m_smokeParticleCount; i++)
 	{
 		m_smokeParticles[i].Update();
 		m_smokePositions[i] = glm::vec4(m_smokeParticles[i].m_position, m_smokeParticles[i].m_elapsedTime / m_smokeEmmisionRate);
@@ -137,7 +137,7 @@ void CBonfireParticleSystem::Draw()
 
 CBonfireParticleSystem::CFireParticle::CFireParticle()
 {
-	m_elapsedTime = ((float)rand() / (double)RAND_MAX) * m_particleSystem->m_fireEmmisionRate;
+	m_elapsedTime = ((float)rand() / RAND_MAX) * m_particleSystem->m_fireEmmisionRate;
 	ResetToInitialValues();
 }
 
@@ -150,9 +150,9 @@ void CBonfireParticleSystem::CFireParticle::ResetToInitialValues()
 	float minRiseSpeed = 2.0f; float maxRiseSpeed = 4.0f;
 
 	m_velocity = glm::vec3(
-		cosf(2.0f * glm::pi<float>() * glm::Lerp(minSpreadSpeed, maxSpreadSpeed, (float)rand() / (double)RAND_MAX)),
-		glm::Lerp(minRiseSpeed, maxRiseSpeed, (float)rand() / (double)RAND_MAX),
-		sinf(2.0f * glm::pi<float>() * glm::Lerp(minSpreadSpeed, maxSpreadSpeed, (float)rand() / (double)RAND_MAX))
+		cosf(2.0f * glm::pi<float>() * glm::Lerp(minSpreadSpeed, maxSpreadSpeed, (float)rand() / RAND_MAX)),
+		glm::Lerp(minRiseSpeed, maxRiseSpeed, (float)rand() / RAND_MAX),
+		sinf(2.0f * glm::pi<float>() * glm::Lerp(minSpreadSpeed, maxSpreadSpeed, (float)rand() / RAND_MAX))
 	);
 }
 
@@ -172,7 +172,7 @@ void CBonfireParticleSystem::CFireParticle::Update()
 
 CBonfireParticleSystem::CSmokeParticle::CSmokeParticle()
 {
-	m_elapsedTime = ((float)rand() / (double)RAND_MAX) * m_particleSystem->m_smokeEmmisionRate;
+	m_elapsedTime = ((float)rand() / RAND_MAX) * m_particleSystem->m_smokeEmmisionRate;
 	ResetToInitialValues();
 }
 
@@ -185,9 +185,9 @@ void CBonfireParticleSystem::CSmokeParticle::ResetToInitialValues()
 	float minRiseSpeed = 3.0f; float maxRiseSpeed = 4.0f;
 	
 	m_velocity = glm::vec3(
-		cosf(2.0f * glm::pi<float>() * glm::Lerp(minSpreadSpeed, maxSpreadSpeed, (float)rand() / (double)RAND_MAX)),
-		glm::Lerp(minRiseSpeed, maxRiseSpeed, (float)rand() / (double)RAND_MAX),
-		sinf(2.0f * glm::pi<float>() * glm::Lerp(minSpreadSpeed, maxSpreadSpeed, (float)rand() / (double)RAND_MAX))
+		cosf(2.0f * glm::pi<float>() * glm::Lerp(minSpreadSpeed, maxSpreadSpeed, (float)rand() / RAND_MAX)),
+		glm::Lerp(minRiseSpeed, maxRiseSpeed, (float)rand() / RAND_MAX),
+		sinf(2.0f * glm::pi<float>() * glm::Lerp(minSpreadSpeed, maxSpreadSpeed, (float)rand() / RAND_MAX))
 	);
 }
 

@@ -21,6 +21,7 @@ float g_time = 0;
 #include "ssAnimatedModel.h"
 #include <MathUtils.h>
 #include "GPUParticle.h"
+#include <GameObject.h>
 
 //------------------------------------------------------------------------------------------------------------------------
 // Procedure: CStandaloneGameManager()
@@ -91,6 +92,11 @@ CStandaloneGameManager::CStandaloneGameManager()
 	m_particleSystem->m_visible = false;
 	m_gpuParticleSystem->m_visible = false;
 
+	CGameObject* plane = new CGameObject;
+	gm::GeneratePlane(*plane->GenerateMesh<CMesh<>>(), glm::vec3(10.0f));
+	plane->GetMesh()->m_shader = diffuse;
+	plane->m_transform.RotateEuler(glm::vec3(-90.0f, 0.0f, 0.0f));
+	
 	//Setup Lighting
 	new CDirectionalLight;
 	CLight::UpdateLightUniforms(*diffuse);

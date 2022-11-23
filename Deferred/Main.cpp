@@ -132,7 +132,7 @@ int main()
 
 #pragma endregion
 
-    srand(time(0));
+    srand((unsigned int)time(0));
 
     //Set up Game Manager
     new CDeferredGameManager;
